@@ -1,5 +1,6 @@
 import React, { useRef, useEffect } from "react";
 import { useAccuracyContext } from "../contexts/accuracyContext";
+import { useAuth } from "../contexts/userContext";
 
 const useAccuracySpeedTracker = () => {
  
@@ -9,9 +10,11 @@ const useAccuracySpeedTracker = () => {
 
     useEffect(() => {
         currentTime.current = Date.now();
+        setAvgSpeed(0);
     }, [])
 
     const {setAvgSpeed} = useAccuracyContext();
+    const {currentUser} = useAuth();
 
     const calculateSpeedTakenToAnswer = () => {
         // get how long the user took to complete the problem
@@ -25,7 +28,9 @@ const useAccuracySpeedTracker = () => {
         totalTimeSpent.current = totalTimeSpent.current + timeToAnswerQuestion;
 
         // store it in db (TODO)
-        setAvgSpeed(Math.trunc(Math.round(totalTimeSpent.current/noOfQuestionsAnswered.current) / 1000));
+        const avgSpeed = Math.trunc(totalTimeSpent.current/noOfQuestionsAnswered.current);
+        setAvgSpeed(avgSpeed);
+
     }
 
     return{calculateSpeedTakenToAnswer}

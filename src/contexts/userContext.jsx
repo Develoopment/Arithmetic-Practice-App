@@ -1,6 +1,6 @@
 // A decoupled way to share user data (via React context )
 import React, { useContext, useEffect, useState } from 'react'
-import { getUser, signInWithGoogle, auth } from '../utilities/firebase';
+import { getUser, auth } from '../utilities/firebase';
 
 const AuthContext = React.createContext();
 
@@ -54,7 +54,8 @@ export function AuthProvider({children}) {
     },[])
 
     const value = {
-        currentUser
+        currentUser,
+        setCurrentUser
     }
 
     return(

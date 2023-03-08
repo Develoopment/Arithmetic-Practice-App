@@ -66,8 +66,14 @@ const addUser = async (uid, name, email) => {
 
 const getUser = async (uid) =>{
     const user = await getDoc(doc(db, "Users", uid));
+    let foundUser = {};
     if(user.exists){
-        return user.data();
+        foundUser = {
+            "uid" : uid,
+            ...user.data()
+        }
+        console.log(foundUser);
+        return foundUser;
     }else{
         return false;
     }
@@ -77,10 +83,28 @@ const logout = async() => {
     await signOut(auth);
 };
 
+// write the scores and it's data 
+const addScore = async (uid, newScore) => {
+    let scores = await getDoc(doc(db, "Users", uid));
+    
+    scores = scores.data().scores;
+    scores.push(newScore);
+    
+    try{
+        await setDoc(doc(db, "Users", uid), {
+            scores: scores
+        }, {merge:true})
+    }catch(error){
+        console.log(`firebase error : ${error}`)
+    }
+    
+}
+
 export{
     logout,
     addUser,
     getUser,
     signInWithGoogle,
-    auth
+    auth,
+    addScore
 }

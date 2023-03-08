@@ -4,6 +4,9 @@ import {Link} from "react-router-dom";
 import DoneIcon from '@mui/icons-material/Done';
 import useGetRandQuestions from '../../hooks/RandomQuestions';
 import useAccuracySpeedTracker from '../../hooks/AccuracySpeedTracker';
+import { useAccuracyContext } from '../../contexts/accuracyContext';
+import { addScore } from '../../utilities/firebase';
+import { useAuth } from '../../contexts/userContext';
 
 function QuestionSpam(){
 
@@ -16,6 +19,10 @@ function QuestionSpam(){
         isCorrect} = useGetRandQuestions();
 
     const {calculateSpeedTakenToAnswer} = useAccuracySpeedTracker();
+
+    // this info is updated by the other hooks and will be added to the db
+    const{questionsAnswered, avgSpeed, noOfQuestionsCorrect} = useAccuracyContext();
+    const {currentUser} = useAuth();
 
     return(
         <div className='questionSpamContainer'>
@@ -54,7 +61,20 @@ function QuestionSpam(){
 
             <h2>{isCorrect}</h2>
 
-            <Link to="/"><Button variant="contained"  endIcon={<DoneIcon/>}>Done</Button></Link>
+            <Link to="/"><Button variant="contained" onClick={() => {
+                calculateSpeedTakenToAnswer();
+
+                const accuracy = (noOfQuestionsCorrect / questionsAnswered)*100;
+                // calculate accuracy
+                // add this information to the scores array of the logged user's document
+                const newScore = {
+                    questionsAnswered,
+                    noOfQuestionsCorrect,
+                    avgSpeed,
+                    accuracy
+                }
+                addScore(currentUser.uid, newScore);
+            }} endIcon={<DoneIcon/>}>Done</Button></Link>
         </div>
     )
 }

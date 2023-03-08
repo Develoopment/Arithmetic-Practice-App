@@ -8,7 +8,7 @@ function Menu(){
 
     // get the logged in user data
     const {currentUser} = useAuth();
-    // console.log(currentUser);
+    console.log(currentUser);
 
     return(
         <div className='menu-wrapper'>

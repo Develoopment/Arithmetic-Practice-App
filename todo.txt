@@ -1,0 +1,7 @@
+##TO DO##
+
+- Calculate avg speed for questions answered and store it in context +
+- Display avg speed in score component cards +
+- Add firebase for user auth +
+- store each user's accuracy and speed in firestore
+- Read from db for the data (add a .map()) for the score component

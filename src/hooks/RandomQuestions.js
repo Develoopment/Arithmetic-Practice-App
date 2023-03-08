@@ -34,10 +34,11 @@ const useGetRandQuestions = () => {
         loadRandomQuestion();
         // setting the number of questions answered to 0 every time page first loads
         setQuestionsAnswered(0);
+        setnoOfQuestionsCorrect(0);
 
     },[])
 
-    const handleSubmit = (event) => {
+    const handleSubmit = () => {
 
         // increase number of questions answered
         setQuestionsAnswered(questionsAnswered + 1);
