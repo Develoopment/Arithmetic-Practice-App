@@ -1,7 +1,4 @@
 ##TO DO##
 
-- Calculate avg speed for questions answered and store it in context +
-- Display avg speed in score component cards +
-- Add firebase for user auth +
-- store each user's accuracy and speed in firestore
-- Read from db for the data (add a .map()) for the score component
+- extract the code that saves the user data into to the db into it's own files
+- Now the fun part! Styles with css (figure out how to use modules.css)
