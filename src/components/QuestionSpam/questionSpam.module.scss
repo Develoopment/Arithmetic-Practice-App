@@ -1,0 +1,65 @@
+$gapSize: 1em;
+$inputPadWidth: 40vh;
+
+.questionSpamContainer{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    margin: 2em;
+
+    min-width:500px;
+}
+
+.questionWrapper{
+    display: flex;
+    justify-content: center;
+    // border:2px solid red;
+    width:100%;
+}
+
+.questionLabel{
+    font-size:3em;
+    color: white;
+    margin-right:1.5em;
+    // border:2px solid green;
+}
+
+.inputPad{
+    display: grid;
+    grid-template-columns: auto auto auto;
+    row-gap: $gapSize;
+    column-gap: $gapSize;
+
+    // border:2px solid red;
+
+    height:53vh;
+    width:$inputPadWidth;
+
+    padding:2em;
+}
+
+.gridItem{
+    margin:100px;
+}
+
+.zeroBtn{
+    grid-column: 2;
+}
+
+.operationsWrapper{
+    // border:5px solid green;
+    width:$inputPadWidth;
+    height:6vh;
+
+    display: flex;
+    flex-direction: column;
+    align-items:center;
+    gap:1em;
+}
+
+.correctLabel{
+    color:white;
+    margin-top: 1.5em;
+    font-size: 2em;
+}

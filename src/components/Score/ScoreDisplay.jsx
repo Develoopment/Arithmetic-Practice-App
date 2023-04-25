@@ -4,6 +4,7 @@ import { Button } from '@mui/material';
 import {Card, CardContent, Typography, CircularProgress} from '@mui/material';
 import {useAuth} from "../../contexts/userContext" 
 import { getUser } from '../../utilities/firebase';
+import styles from "./scoreDisplay.module.scss"
 
 function ScoreDisplay(){
 

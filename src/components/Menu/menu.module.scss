@@ -1,0 +1,41 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans&family=Roboto+Flex:opsz@8..144&display=swap');
+
+.menuContainer{
+    height:100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.menuWrapper{
+
+    height:60vh;
+    width:60vh;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    background-color: #505050;
+    border-radius: 0.5em;
+
+    color:white;
+    font-family: 'Open Sans', sans-serif;
+
+    .menuLabel{
+        font-size: 3em;
+    }
+    .button{
+        text-decoration: none;
+    }
+
+    .mainAction{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+
+        padding:2em;
+        gap:1em
+    }
+}

@@ -46,11 +46,11 @@ const useGetRandQuestions = () => {
         // evaluate the accuracy of the answer
         const userAnswerForEvaluation = parseInt(userAnswer);
         if(answerLabel == userAnswerForEvaluation){
-            setIsCorrect("correct");
+            setIsCorrect("Correct!");
             setnoOfQuestionsCorrect(noOfQuestionsCorrect + 1);
             
         }else{
-            setIsCorrect("wrong");
+            setIsCorrect("Wrong.");
         }
 
         // after that clear input, load new question and start counting how long the user takes to answer the question
